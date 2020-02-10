@@ -7,7 +7,7 @@ use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\UpgradeDataInterface;
 use Magento\Framework\Exception\LocalizedException;
-use Alevel\Learning\Api\PostRepositoryInterface;
+use Alevel\MyModule\Api\PostRepositoryInterface;
 use Magento\Framework\DB\TransactionFactory;
 use Magento\Framework\Math\Random;
 
