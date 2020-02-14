@@ -63,6 +63,7 @@ class InstallSchema implements InstallSchemaInterface
                 null,
                 ['nullable' => false, 'default' => new \Zend_Db_Expr('CURRENT_TIMESTAMP')],
                 'Updated At'
+
             )->addIndex(
                 $setup->getIdxName($setup->getTable('alevel_mymodule_model'), ['entity_id'], AdapterInterface::INDEX_TYPE_INDEX),
                 ['entity_id'],

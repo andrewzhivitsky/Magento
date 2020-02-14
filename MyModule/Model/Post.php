@@ -63,4 +63,9 @@ class Post extends AbstractModel implements PostInterface
         return $this->getData(PostInterface::TELEPHONE);
     }
 
+    public function getIndNum()
+    {
+        return $this->getData(PostInterface::INDNUM);
+    }
+
 }

@@ -14,6 +14,7 @@ interface PostInterface
     const CONTENT = 'content';
     const ENABLED = 'enabled';
     const TELEPHONE = 'telephone';
+    const INDNUM = 'indnum';
 
     /**
      * @return mixed
@@ -44,4 +45,15 @@ interface PostInterface
      * @return mixed
      */
     public function getTelephone();
+
+    /**
+     * @return mixed
+     */
+
+    public function getIndNum();
+
+    /**
+     * @return mixed
+     */
+
 }

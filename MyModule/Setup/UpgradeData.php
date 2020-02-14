@@ -66,8 +66,10 @@ class UpgradeData implements UpgradeDataInterface
     {
         $setup->startSetup();
 
-        if (version_compare($context->getVersion(), '1.0.0') < 0) {
+        if (version_compare($context->getVersion(), '3.1.0') < 0) {
             $this->changeData();
+            $this->changeDdata();
+
         }
 
         $setup->endSetup();
@@ -89,6 +91,21 @@ class UpgradeData implements UpgradeDataInterface
 
             $transactionModel->addObject($item);
         }
+        
+    }
+    private function changeDdata()
+    {
+        $transactionModel = $this->transactionFactory->create();
+
+        $searchCriteria = $this->searchCriteriaBuilder->create();
+
+        $searchResult = $this->postRepository->getList($searchCriteria);
+
+        foreach ($searchResult->getItems() as $item) {
+            $item->setIndNum(sprintf('' , $this->random->getRandomNumber(10000, 20000)));
+
+            $transactionModel->addObject($item);
+        }
 
         try {
             $transactionModel->save();
@@ -96,5 +113,7 @@ class UpgradeData implements UpgradeDataInterface
             $this->logger->critical($exception->getMessage());
         }
     }
+
+
 
 }

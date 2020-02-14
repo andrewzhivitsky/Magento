@@ -38,8 +38,9 @@ class UpgradeSchema implements UpgradeSchemaInterface
         $this->connection = $setup->getConnection();
 
         /**  version_compare() returned 1 if the second is lower. */
-        if (version_compare($context->getVersion(), '1.0.0') < 0) {
+        if (version_compare($context->getVersion(), '3.1.0') < 0) {
             $this->addColumnTelephone();
+            $this->addColumnNumber();
         }
 
         $setup->endSetup();
@@ -58,6 +59,18 @@ class UpgradeSchema implements UpgradeSchemaInterface
                 'nullable' => true,
                 'comment' => 'Telephone'
             ]
+        );
+    }
+    private function addColumnNumber(){
+        $this->connection->addColumn(
+            $this->table,
+            'indnum',
+            [
+                'type' => Table::TYPE_TEXT,
+                'nullable'=> true,
+                'comment' =>'IndNum',
+            ]
+
         );
     }
 }
